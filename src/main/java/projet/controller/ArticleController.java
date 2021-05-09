@@ -82,7 +82,7 @@ public class ArticleController {
 		
 		article.setCategorie(categorie);
 		articleServ.enregistrer(article);
-		
+		request.setAttribute("listArticle", articleServ.getAll(), 1);
 		request.setAttribute("listArticleOwned", articleServ.getArticlesByRedacteur(redacteur), 1);
 		mv.setViewName("mesArticles");
 		return mv;
@@ -100,6 +100,7 @@ public class ArticleController {
 			articleServ.supprimeParId(idArt);
 			Redacteur redacteur = (Redacteur) request.getAttribute("user", 1);
 			request.setAttribute("listArticleOwned", articleServ.getArticlesByRedacteur(redacteur), 1);
+			
 			mv.setViewName("mesArticles");
 		} else if (buttonModifier!=null) {
 			Integer idArt = Integer.valueOf(buttonModifier);

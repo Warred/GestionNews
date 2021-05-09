@@ -10,12 +10,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import projet.model.Article;
 import projet.model.Utilisateur;
+import projet.service.IArticle;
 import projet.service.ICommentaire;
 
 @Controller
 public class RedirectionController {
 	@Autowired
 	private ICommentaire commentaireServ;
+	
+	@Autowired
+	private IArticle articleServ;
 	
 	@GetMapping(value="/")
 	public String index(Model model) {
@@ -40,6 +44,7 @@ public class RedirectionController {
 				mv.setViewName("accueilLecteur");
 				
 			} else if (page.equals("listArticles")) {
+				request.setAttribute("listArticle", articleServ.getAll(), 1);
 				mv.setViewName("listArticles");
 				
 			} else if (page.equals("mesArticles")) {

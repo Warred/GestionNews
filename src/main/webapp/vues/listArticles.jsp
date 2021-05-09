@@ -23,8 +23,8 @@
 			<div class="liens">
 				<button name="buttonCommentaires" value="${art.id}">Commentaires</button>
 				<c:if test="${user.id == art.redacteur.id}">
-					<button name="buttonModifier" value="${com.id}">Modifier</button>
-					<button name="buttonSupprimer" value="${com.id}">Supprimer</button>
+					<button name="buttonModifier" value="${art.id}">Modifier</button>
+					<button name="buttonSupprimer" value="${art.id}">Supprimer</button>
 				</c:if>
 			</div>
 		</div>
